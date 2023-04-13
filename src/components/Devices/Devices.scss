@@ -1,0 +1,53 @@
+// Local variables
+$divider-offset: 40px;
+.devices {
+	.container {
+		.content {
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			@media screen and (max-width: $md) {
+				flex-direction: column-reverse;
+				align-items: center;
+				&__left,
+				&__right {
+					width: 100%;
+				}
+			}
+			&__left {
+				max-width: 440px;
+				.title {
+					& > span {
+						@include text-gradient;
+					}
+				}
+				.divider {
+					border: 1px solid rgba($color: #2b3247, $alpha: 0.2);
+					border-radius: 6px;
+					margin: $divider-offset 0;
+				}
+				.cta {
+					&__subtitle {
+						margin-top: 10px;
+						color: $secondary;
+					}
+					&__repair-price {
+						margin-top: 30px;
+						.repair-price {
+							&__label {
+								box-shadow: $main-shadow;
+							}
+						}
+					}
+					&__call {
+						margin-top: 30px;
+					}
+				}
+				.img-holder {
+					margin-top: 24px;
+					@include flex-center-center;
+				}
+			}
+		}
+	}
+}

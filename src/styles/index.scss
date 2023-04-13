@@ -1,0 +1,15 @@
+// Base
+@import 'reset';
+@import 'variables';
+@import 'base';
+// Components
+@import '../components/Header/Header';
+@import '../components/ui/Burger';
+@import '../components/ui/Overlay';
+@import '../components/FirstScreen/FirstScreen';
+@import '../components/RepairPrice/RepairPrice';
+@import '../components/Cards/Cards';
+@import '../components/Devices/Devices';
+@import '../components/Devices/DevicesList';
+@import '../components/Call/Call';
+@import '../components/Modal/Modal';

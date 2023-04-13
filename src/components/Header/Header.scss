@@ -1,0 +1,161 @@
+// Local variables
+$link-underline-height: 4px;
+$link-underline-border: 6px;
+$link-underline-bottom-pos: -8px;
+$drawer-width: 200px;
+
+header {
+	position: sticky;
+	top: 0;
+	padding: 14px 0;
+	background-color: $white;
+	z-index: 10;
+	@media screen and (max-width: $lg) {
+		padding: 10px 0;
+	}
+	@media screen and (max-width: $md) {
+		position: fixed;
+		left: -100%;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		max-width: $drawer-width;
+		display: flex;
+		align-items: center;
+		transition: left $main-transition;
+		&.active {
+			left: 0;
+		}
+	}
+	.container {
+		@include flex-center-between;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+		}
+		gap: 4px;
+		// Logo
+		.logo {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			@media screen and (max-width: $md) {
+				display: none;
+			}
+			&__title {
+				margin-top: 6px;
+				font-size: 18px;
+				font-weight: 700;
+				@media screen and (max-width: $lg) {
+					margin-top: 3px;
+					font-size: 12px;
+				}
+			}
+			&__subtitle {
+				font-size: 12px;
+				opacity: 0.4;
+				@media screen and (max-width: $lg) {
+					font-size: 10px;
+				}
+			}
+		}
+		// Navigation
+		.navigation {
+			&__list {
+				@include flex-center-between;
+				gap: 20px;
+				@media screen and (max-width: $lg) {
+					gap: 10px;
+				}
+				@media screen and (max-width: $md) {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 10px;
+				}
+			}
+			&__link {
+				display: block;
+				position: relative;
+				font-size: 16px;
+				color: $primary;
+				transition: color $main-transition;
+				@media screen and (min-width: $md) {
+					font-size: 12px;
+					color: $secondary;
+				}
+				@media screen and (min-width: $lg) {
+					font-size: 14px;
+				}
+				&::after {
+					@include pseudo-elem($width: 0, $height: $link-underline-height);
+					left: 0;
+					bottom: $link-underline-bottom-pos;
+					background: $blue-gradient;
+					border-radius: $link-underline-border;
+					transition: width $main-transition;
+				}
+				&:hover {
+					color: $primary;
+					&::after {
+						width: 100%;
+					}
+				}
+			}
+		}
+		// Location
+		.location {
+			@media screen and (hover: hover) {
+				&:hover {
+					.location__icon {
+						@include animation-bounce($duration: 700ms, $count: 3);
+					}
+				}
+			}
+			&__link {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				@media screen and (max-width: $lg) {
+					gap: 6px;
+				}
+				@media screen and (max-width: $md) {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+			&__address {
+				font-size: 14px;
+				line-height: 20px;
+				@media screen and (max-width: $lg) {
+					font-size: 12px;
+					line-height: 16px;
+				}
+			}
+		}
+		// Call
+		.call {
+			display: flex;
+			flex-direction: column;
+			&__hours {
+				color: $secondary;
+				font-size: 14px;
+				@media screen and (max-width: $lg) {
+					font-size: 10px;
+				}
+			}
+			&__number {
+				margin-top: 4px;
+				display: block;
+				font-size: 24px;
+				line-height: 28px;
+				transition: color $main-transition;
+				@media screen and (max-width: $lg) {
+					margin-top: 2px;
+					font-size: 16px;
+					line-height: 20px;
+				}
+			}
+		}
+	}
+}

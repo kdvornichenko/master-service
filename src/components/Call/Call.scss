@@ -1,0 +1,16 @@
+.call {
+	// Text
+	&__text {
+		color: $secondary;
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+		}
+	}
+	// Number
+	&__number {
+		margin-top: 10px;
+		& > h4 {
+			@include text-gradient;
+		}
+	}
+}

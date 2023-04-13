@@ -1,0 +1,93 @@
+// Local variables
+$device-card-border: 1px solid rgba(43, 50, 71, 0.08);
+$device-card-border-radius: 10px;
+$device-card-button-border: 2px solid $blue-gradient;
+$device-card-img-width: (60px, 70px, 80px, 90px, 100px, 110px, 120px);
+
+.devices {
+	.container {
+		.content {
+			&__right {
+				flex: 1;
+				max-width: 600px;
+				& > ul {
+					.device {
+						padding: 10px 40px 10px 10px;
+						background-color: $white;
+						border: $device-card-border;
+						border-radius: $device-card-border-radius;
+						transition: box-shadow $main-transition;
+						@media screen and (max-width: $lg) {
+							padding: 8px;
+						}
+						.img-holder {
+							width: 50px;
+							@include set-breakpoint-values('width', $device-card-img-width);
+						}
+						&:not(:first-child) {
+							margin-top: 10px;
+						}
+						&:hover {
+							box-shadow: $main-shadow;
+						}
+						&__content {
+							@include flex-center-between;
+							gap: 10px;
+							.info {
+								@media screen and (max-width: $sx2) {
+									width: 150px;
+								}
+								&__subtitle {
+									display: flex;
+									align-items: center;
+									gap: 10px;
+									@media screen and (max-width: $sx2) {
+										flex-direction: column;
+										align-items: flex-start;
+										gap: 0;
+									}
+									@media screen and (min-width: $md) {
+										gap: 4px;
+									}
+									@media screen and (min-width: $lg) {
+										gap: 16px;
+									}
+									&-divider {
+										width: 8px;
+										height: 8px;
+										border-radius: 100%;
+										background: $blue-gradient;
+										@media screen and (max-width: $sx2) {
+											display: none;
+										}
+									}
+									& > span {
+										font-size: 14px;
+										color: $secondary;
+										@media screen and (max-width: $sx) {
+											font-size: 12px;
+										}
+									}
+								}
+							}
+						}
+						&__button {
+							@include border-gradient(2px, 1000px, $blue-gradient);
+							padding: 6px 22px;
+							font-size: 14px;
+							color: $secondary;
+							transition: all $main-transition;
+							@media screen and (max-width: $md) {
+								padding: 4px 11px;
+							}
+							&:hover {
+								box-shadow: none;
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

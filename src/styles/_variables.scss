@@ -1,0 +1,127 @@
+// Colors
+$primary: #000;
+$secondary: rgba($primary, $alpha: 0.51);
+$bg: #f8fbfe;
+$white: #fff;
+$blue-gradient: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+
+// Shadows
+$main-shadow: 0px 30px 50px rgba(126, 143, 160, 0.2);
+// Placeholder
+$placeholder-color: rgba(0, 0, 0, 0.3);
+
+// Breakpoints
+$sx: 375px;
+$sx2: 425px;
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xl2: 1536px;
+
+$breakpoints: (
+	sx: $sx,
+	sx2: $sx2,
+	sm: $sm,
+	md: $md,
+	lg: $lg,
+	xl: $xl,
+	xl2: $xl2,
+);
+
+// Spacings
+$main-container-width: 1170px;
+$main-px: 16px;
+
+// Transitions
+$main-transition: 0.2s ease-in-out;
+
+// @Mixins
+// Before/After
+@mixin pseudo-elem($width, $height) {
+	content: '';
+	position: absolute;
+	width: $width;
+	height: $height;
+}
+
+// Change breakpoint-values
+@mixin set-breakpoint-values($param, $values) {
+	$keys: map-keys($breakpoints);
+	@each $value in $values {
+		$key: nth($keys, index($values, $value));
+		@media screen and (min-width: map-get($breakpoints, $key)) {
+			#{$param}: $value;
+		}
+	}
+}
+
+// Flex-center-between
+@mixin flex-center-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+// Flex-center-center
+@mixin flex-center-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+//Border gradient
+@mixin border-gradient($border-width, $border-radius, $gradient) {
+	border: solid $border-width transparent;
+	background-image: linear-gradient(
+			rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 0)
+		),
+		$gradient;
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	box-shadow: $border-width $border-radius 1px #fff inset;
+	border-radius: $border-radius;
+	box-shadow: $border-width $border-radius 1px #fff inset;
+}
+// Animations
+// Bounce
+@mixin animation-bounce($duration, $count) {
+	animation: bounce $duration $count;
+
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+			animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+		}
+		50% {
+			transform: translateY(-25%);
+			animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+		}
+	}
+}
+
+// Pulse
+@mixin animation-rainbow($duration, $count) {
+	animation: rainbow $duration ease-in-out $count;
+	@keyframes rainbow {
+		0% {
+			background-position: left;
+		}
+		50% {
+			background-position: right;
+		}
+		100% {
+			background-position: left;
+		}
+	}
+}
+
+// Text background gradient
+@mixin text-gradient {
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+	background: $blue-gradient;
+	background-clip: text;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+}

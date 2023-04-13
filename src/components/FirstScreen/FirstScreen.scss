@@ -1,0 +1,171 @@
+// Local variables
+$marker-size: 8px;
+$marker-offset: 15px;
+$sticker-size: 140px;
+$container-padding-t: (50px, 55px, 60px, 65px, 70px, 80px, 90px);
+$container-padding-b: (80px, 90px, 100px, 120px, 130px, 140px, 150px);
+// First-screen
+.first-screen {
+	background: {
+		image: url('assets/first-screen-bg.png');
+		position: center;
+		repeat: no-repeat;
+	}
+	@media screen and (max-width: $md) {
+		background-size: cover;
+	}
+	&__overlay {
+		background: rgba(28, 33, 50, 0.8);
+	}
+	.container {
+		padding: {
+			top: 45px;
+			bottom: 70px;
+		}
+		@include set-breakpoint-values('padding-top', $container-padding-t);
+		@include set-breakpoint-values('padding-bottom', $container-padding-b);
+		display: flex;
+		justify-content: space-between;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+		}
+		// Content
+		.content {
+			// Overtitle
+			&__overtitle {
+				@include text-gradient;
+				font-weight: 700;
+				font-size: 20px;
+				line-height: 23px;
+				@media screen and (max-width: $md) {
+					font-size: 16px;
+				}
+				@media screen and (max-width: $sm) {
+					font-size: 14px;
+				}
+			}
+			// Title
+			&__title {
+				margin-top: 8px;
+				display: flex;
+				flex-direction: column;
+				& > span {
+					color: $white;
+				}
+				@media screen and (max-width: $md) {
+					margin-top: 4px;
+					display: inline-block;
+				}
+			}
+			// Conditions
+			&__conditions {
+				margin-top: 40px;
+				margin-left: calc($marker-offset + $marker-size);
+				@media screen and (max-width: $xl) {
+					margin-top: 36px;
+				}
+				@media screen and (max-width: $lg) {
+					margin-top: 28px;
+				}
+				@media screen and (max-width: $md) {
+					margin-top: 20px;
+				}
+				& > li {
+					position: relative;
+					color: $white;
+					font-size: 20px;
+					line-height: 23px;
+					& > span {
+						color: $white;
+					}
+					@media screen and (max-width: $md) {
+						font-size: 18px;
+					}
+					@media screen and (max-width: $sm) {
+						font-size: 16px;
+					}
+					&:last-child {
+						margin-top: 16px;
+						display: flex;
+						flex-direction: column;
+						gap: 4px;
+						@media screen and (max-width: $md) {
+							margin-top: 12px;
+							display: inline-block;
+						}
+					}
+					&::before {
+						@include pseudo-elem($width: $marker-size, $height: $marker-size);
+						border-radius: 100%;
+						background: $blue-gradient;
+						left: calc(-1 * ($marker-offset + $marker-size));
+						top: 11px;
+						transform: translateY(-50%);
+					}
+				}
+			}
+			// Repair price block
+			&__repair-price {
+				margin-top: 48px;
+				max-width: 370px;
+				@media screen and (max-width: $xl) {
+					margin-top: 36px;
+				}
+				@media screen and (max-width: $lg) {
+					margin-top: 30px;
+				}
+				@media screen and (max-width: $md) {
+					margin-top: 22px;
+				}
+				.repair-price {
+					&__label {
+						border: 1px solid rgba($color: $primary, $alpha: 0.4);
+					}
+				}
+			}
+		}
+		// Image
+		.image {
+			position: relative;
+			margin-top: 5px;
+			@media screen and (max-width: $md) {
+				display: flex;
+				img {
+					margin: 0 auto;
+				}
+			}
+			&__sticker {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				max-width: $sticker-size;
+				max-height: $sticker-size;
+				background: $blue-gradient;
+				border-radius: 100%;
+				position: absolute;
+				bottom: 35px;
+				left: 0;
+				transform: translateX(-50%) rotate(-20deg);
+				@media screen and (max-width: $lg) {
+					transform: translateX(0) rotate(-20deg);
+				}
+				.discount,
+				.text {
+					color: $white;
+				}
+				.discount {
+					font-weight: 700;
+					font-size: 40px;
+					line-height: 47px;
+				}
+				.text {
+					font-size: 14px;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+// Local variables
+$card-paddings: (
+	22px 27px,
+	29px 31px,
+	31px 33px,
+	33px 35px,
+	37px 39px,
+	40px 45px
+);
+$card-border-radius: 16px;
+$card-max-width: 370px;
+.cards {
+	.container {
+		@include flex-center-center;
+		flex-wrap: wrap;
+		gap: 30px;
+		@media screen and (max-width: $md) {
+			gap: 15px;
+		}
+		.card {
+			transform: translateY(-50%);
+			max-width: 310px;
+			padding: 20px 25px;
+			@include set-breakpoint-values('padding', $card-paddings);
+			border-radius: $card-border-radius;
+			box-shadow: $main-shadow;
+			background-color: $white;
+			@media screen and (min-width: $md) {
+				max-width: 350px;
+			}
+			@media screen and (min-width: $xl) {
+				max-width: 370px;
+			}
+			&__content {
+				&-top {
+					display: flex;
+					align-items: center;
+					gap: 24px;
+				}
+				&-bottom {
+					margin-top: 16px;
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
