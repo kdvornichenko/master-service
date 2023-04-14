@@ -29,12 +29,16 @@ overlay.addEventListener('click', overlayToggle)
 const devicesList = document.querySelector('.devices__list')
 const deviceButtons = devicesList.querySelectorAll('.device__button')
 const modal = document.querySelector('.modal')
+const modalClose = modal.querySelector('.modal__close')
 
 deviceButtons.forEach((button) => {
-	button.addEventListener('click', () => {
-		modal.classList.toggle('active')
-	})
+	button.addEventListener('click', toggleModalVisibility)
 })
+modalClose.addEventListener('click', toggleModalVisibility)
+
+function toggleModalVisibility() {
+	modal.classList.toggle('active')
+}
 
 // Repair price
 const phoneInputs = document.querySelectorAll('input[name="phone"]')
